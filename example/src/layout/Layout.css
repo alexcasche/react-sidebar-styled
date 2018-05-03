@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+}
+.header {
+  height: 50px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #20232A;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.header__logo {
+  height: 25px;
+  position: relative;
+  top: 12px;
+  margin-right: 10px;
+}
+.header p {
+  flex-grow: 2;
+  margin: 0;
+  font-size: 20px;
+  line-height: 48px;
+  font-size: 20px;
+  color: #61DAFB;
+  font-weight: 500;
+}
+.header a {
+  margin-left: 20px;
+  color: #DDD;
+  font-size: 26px;
+  line-height: 50px;
+}
+.header a:hover {
+  color: #61DAFB;
+}
+.demo {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #282C34;
+  text-align: center;
+}
+.demo h1 {
+  text-align: center;
+  color: #61DAFB;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.demo h1 span {
+  color: #DDD;
+  font-weight: normal;
+}
+.demo__toggle {
+  padding: .35em 0;
+  width: 75px;
+  background-color: #DDD;
+  color: #21242B;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1em;
+}
+.demo__toggle:hover {
+  background-color: white;
+}
+.demo__toggle--left {
+  border-radius: 5px 0 0 5px;
+}
+.demo__toggle--right {
+  border-radius: 0 5px 5px 0;
+}
+.demo__toggle--active, .demo__toggle--active:hover {
+  background-color: #58C1DE;
+  color: white;
+  pointer-events: none;
+}
