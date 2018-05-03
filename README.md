@@ -2,20 +2,18 @@
 
 > Flexible React Sidebar Component
 
-[![NPM](https://img.shields.io/npm/v/react-sidebar.svg)](https://www.npmjs.com/package/react-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+<!-- [![NPM](https://img.shields.io/npm/v/react-sidebar.svg)](https://www.npmjs.com/package/react-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) -->
 
-## Install
+<!-- ## Install
 
 ```bash
 npm install --save react-sidebar
-```
+``` -->
 
-## Usage
+<!-- ## Usage
 
 ```jsx
 import React, { Component } from 'react'
-
-import MyComponent from 'react-sidebar'
 
 class Example extends Component {
   render () {
@@ -24,7 +22,7 @@ class Example extends Component {
     )
   }
 }
-```
+``` -->
 
 ## License
 
