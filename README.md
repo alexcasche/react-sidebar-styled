@@ -1,4 +1,4 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="50px" /> react-sidebar
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" style="width:60px;position:relative;top:10px;left:-10px;margin-right:-10px;" /> react-sidebar
 ===============
 
 Flexible React Sidebar Component 🤘
@@ -51,6 +51,26 @@ Props
 
 Classes
 ---------------
+
+Development
+---------------
+Clone repo
+
+```bash
+git clone https://github.com/alexcasche/react-sidebar
+```
+
+Setup & start rollup
+```bash
+cd react-sidebar
+npm start
+```
+
+Setup & start dev server
+<br/>``cd example``
+<br/>`npm install` or `yarn install`
+<br/>`npm start` or `yarn start`
+
 
 License
 ---------------

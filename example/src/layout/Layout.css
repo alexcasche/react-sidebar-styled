@@ -160,4 +160,6 @@ button:hover {
 }
 .details__markdown code {
   background-color: transparent !important;
+  font-size: 14px;
+  line-height: 20px;
 }
