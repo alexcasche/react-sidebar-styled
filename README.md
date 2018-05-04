@@ -39,12 +39,11 @@ class ReactSidebar extends Component {
 }
 ```
 
-Example
+Examples
 ---------------
-Interactive example - 
-
-Playground
----------------
+<a style="width:130px;display:block;border:2px solid black;border-radius:4px;padding:8px 15px 6px;">
+<img style="max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/9/93/Black-Large.png">
+</a>
 
 Props
 ---------------
@@ -60,16 +59,22 @@ Clone repo
 git clone https://github.com/alexcasche/react-sidebar
 ```
 
-Setup & start rollup
+Setup rollup and start file watch
 ```bash
-cd react-sidebar
-npm start
+npm install && npm start
+yarn install && yarn add
 ```
 
-Setup & start dev server
-<br/>``cd example``
-<br/>`npm install` or `yarn install`
-<br/>`npm start` or `yarn start`
+Setup react app and start dev server
+```bash
+cd example
+npm install && npm start
+yarn install && yarn start
+```
+
+Shoutout
+---------------
+Big thanks to Travis Fischer for the awesome [create-react-library](https://github.com/transitive-bullshit/create-react-library) 🙌
 
 
 License

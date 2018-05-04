@@ -159,7 +159,14 @@ button:hover {
   padding: 16px;
 }
 .details__markdown code {
-  background-color: transparent !important;
+  background-color: #F6F8FA !important;
   font-size: 14px;
   line-height: 20px;
+}
+.details__markdown a {
+  color: #0366d6 !important;
+  text-decoration: none;
+}
+.details__markdown a:hover {
+  text-decoration: underline;
 }
