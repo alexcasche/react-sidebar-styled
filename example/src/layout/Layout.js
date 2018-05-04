@@ -4,10 +4,10 @@ import Demo from './Demo'
 import Details from './Details'
 import './Layout.css'
 
-const Layout = ({state, children, updateOption}) => {
+const Layout = ({updateOption}) => {
   return [
     <Header key="header"/>,
-    <Demo key="demo" state={state} updateOption={updateOption}>{children}</Demo>,
+    <Demo key="demo" updateOption={updateOption} />,
     <Details key="details"/>
   ];
 }

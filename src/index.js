@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { propTypes, defaultProps } from './props'
-import { menuStyles, overlayStyles } from './utils'
+import { btnStyles, menuStyles, overlayStyles, pageStyles } from './utils'
 import './style.scss'
 
 export default class Sidebar extends Component {
@@ -10,7 +10,8 @@ export default class Sidebar extends Component {
     super();
     this.state = {
       isOpen: false,
-      sliding: false
+      sliding: false,
+      menuWidth: undefined
     }
     this.menuRef = React.createRef()
   }
@@ -19,26 +20,29 @@ export default class Sidebar extends Component {
     setTimeout(() => this.setState({ sliding: false }), this.props.speed)
   }
   componentDidMount() {
+    const menuWidth = `${this.menuRef.current.clientWidth}px`
     const menuLinks = this.menuRef.current.querySelectorAll("a, button")
     menuLinks.forEach((menuLink) => {
       menuLink.addEventListener('click', this.toggleMenu)
     })
+    this.setState({menuWidth: menuWidth})
   }
   render() {
     return (
-      <div className="sidebar" >
-        <button className="sidebar__btn-open" onClick={this.toggleMenu}>
-          <i className="fas fa-bars" />
-        </button>
+      <div className="sidebar" style={{backgroundColor: this.props.menuColor}}>
         <div className="sidebar__menu" ref={this.menuRef} style={menuStyles(this.props, this.state)}>
           <button className="sidebar__btn-close">
             <i className="fas fa-times" />
           </button>
           {this.props.children[0]}
         </div>
-        <div className="sidebar__overlay" onClick={this.toggleMenu} style={overlayStyles(this.props, this.state)} />
-        <div className="sidebar__page">
+        <div className="sidebar__page" style={pageStyles(this.props, this.state)}>
+        <button className="sidebar__btn-open" onClick={this.toggleMenu} style={btnStyles(this.props)}>
+          <i className="fas fa-bars" />
+        </button>
+          <div className="sidebar__overlay" onClick={this.toggleMenu} style={overlayStyles(this.props, this.state)} />
           {this.props.children[1]}
+          <div className="sidebar__overlay" onClick={this.toggleMenu} style={overlayStyles(this.props, this.state)} />
         </div>
       </div>
     )

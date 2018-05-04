@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Layout from '../layout/Layout'
-import Menu from './Menu'
 import Sidebar from 'react-sidebar'
+import Menu from './Menu'
+import Layout from '../layout/Layout'
 import './Example.css'
 
 const options = {
   side: "left",
-  effect: "slide",
+  effect: "slide-out",
   speed: 250,
   timing: 'ease-in-out'
 }
@@ -21,12 +21,10 @@ export default class Example extends Component {
   }
   render () {
     return (
-      <Layout state={this.state} updateOption={this.updateOption}>
-        <Sidebar {...this.state}>
-          <Menu />
-          <main />
-        </Sidebar>
-      </Layout>
+      <Sidebar {...this.state}>
+        <Menu />
+        <Layout updateOption={this.updateOption} />
+      </Sidebar>
     )
   }
 }

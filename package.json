@@ -20,10 +20,10 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "rename": "mv index.css style.css",
-    "build": "rollup -c && yarn run rename && yarn run clean",
-    "copy": "cp style.css example/src/",
     "clean": "rm index.es.css index.es.js",
-    "start": "rollup -c -w && yarn run copy",
+    "copy": "cp style.css example/src/",
+    "build": "rollup -c && yarn run rename && yarn run clean && yarn run copy",
+    "start": "yarn run build && rollup -c -w",
     "prepare": "yarn run build && yarn run clean",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"

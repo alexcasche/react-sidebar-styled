@@ -1,17 +1,28 @@
 import React from 'react'
 
-const Demo = ({state, children, updateOption}) => {
-  const toggleClass = {
-    left: state.side === 'left' ? 'demo__toggle--active' : '',
-    right: state.side === 'right' ? 'demo__toggle--active': ''
+const Demo = ({updateOption}) => {
+  const handleClick = (e, option) => {
+    e.target.parentNode.childNodes.forEach((el) => {
+      el.classList.remove('active')
+    })
+    e.target.classList.add('active')
+    updateOption(option)
   }
   return (
     <div className="demo">
       <h1>React <span>Sidebar</span></h1>
-      {children}
-      <div className="demo__control">
-        <button onClick={() => updateOption({side: "left"})} className={`demo__toggle demo__toggle--left ${toggleClass.left}`}>left</button>
-        <button onClick={() => updateOption({side: "right"})} className={`demo__toggle demo__toggle--right ${toggleClass.right}`}>right</button>
+      <div className='demo__toggle'>
+        <button onClick={(e) => handleClick(e, {side: 'left'})} className='demo__toggle--left active'>left</button>
+        <button onClick={(e) => handleClick(e, {side: 'right'})} className='demo__toggle--right'>right</button>
+      </div>
+      <div className="demo__buttons">
+        <button onClick={(e) => handleClick(e, {effect: 'slide-out'})} className='demo__button active'>Slide Out</button>
+        <button onClick={(e) => handleClick(e, {effect: 'slide-down'})} className='demo__button'>Slide Down</button>
+        <button onClick={(e) => handleClick(e, {effect: 'slide-corner'})} className='demo__button'>Slide Corner</button>
+        <button onClick={(e) => handleClick(e, {effect: 'push-out'})} className='demo__button'>Push Out</button>
+        <button onClick={(e) => handleClick(e, {effect: 'push-down'})} className='demo__button'>Push Down</button>
+        <button onClick={(e) => handleClick(e, {effect: 'push-corner'})} className='demo__button'>Push Corner</button>
+        <button onClick={(e) => handleClick(e, {effect: 'reveal'})} className='demo__button'>Reveal</button>
       </div>
     </div>
   );

@@ -47,10 +47,9 @@ button:hover {
   color: #61DAFB;
 }
 .demo {
-  height: 400px;
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 20px 80px;
   background-color: #282C34;
   text-align: center;
 }
@@ -58,13 +57,14 @@ button:hover {
   text-align: center;
   color: #61DAFB;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin: 50px auto 15px;
+  font-size: 2.75em;
 }
 .demo h1 span {
   color: #DDD;
   font-weight: normal;
 }
-.demo__toggle {
+.demo__toggle button {
   padding: .35em 0;
   width: 75px;
   background-color: #DDD;
@@ -73,8 +73,14 @@ button:hover {
   font-weight: 500;
   font-size: 1em;
 }
-.demo__toggle:hover {
+.demo__toggle button:hover {
   background-color: white;
+}
+.demo__toggle button.active,
+.demo__toggle button.active:hover {
+  background-color: #58C1DE;
+  color: white;
+  pointer-events: none;
 }
 .demo__toggle--left {
   border-radius: 5px 0 0 5px;
@@ -82,8 +88,76 @@ button:hover {
 .demo__toggle--right {
   border-radius: 0 5px 5px 0;
 }
-.demo__toggle--active, .demo__toggle--active:hover {
+.demo__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 750px;
+  margin: 30px auto;
+}
+.demo__button {
+  padding: .5em 0;
+  width: 180px;
+  background-color: #DDD;
+  color: #21242B;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.1em;
+  border-radius: 2px;
+  margin: 15px 20px;
+}
+.demo__button:hover {
+  background-color: white;
+}
+.demo__button.active, demo__button.active:hover {
   background-color: #58C1DE;
   color: white;
   pointer-events: none;
+}
+.details {
+  background-color: #FAFAFA;
+  padding: 50px 20px 80px;
+}
+.details__readme {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: auto;
+  border: 1px solid #DDD;
+  background-color: white;
+  border-radius: 5px;
+}
+.details__header {
+  padding: 9px 20px 10px;
+  background-color: #F6F8FA;
+  font-weight: bold;
+  color: #292C34;
+  font-size: 1em;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #DDD;
+}
+.details__header i {
+  margin-right: 10px;
+}
+.details__markdown {
+  padding: 20px 45px 45px;
+}
+.details__markdown h1, .details__markdown h2 {
+  font-size: 2em;
+  font-weight: 500;
+  padding-bottom: .35em;
+  border-bottom: 1px solid #EEE;
+}
+.details__markdown h2 {
+  margin-top: 40px;
+  font-size: 1.5em;
+}
+
+.details__markdown pre {
+  background-color: #F6F8FA;
+  padding: 16px;
+}
+.details__markdown code {
+  background-color: transparent !important;
 }

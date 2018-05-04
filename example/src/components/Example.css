@@ -1,18 +1,26 @@
 /*  STYLES TO MOVE INTO COMPONENT  */
 
+.sidebar {
+  position: relative;
+}
+
 .sidebar__menu {
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0;
   padding: 2.5em 1.5em 0;
+  z-index: 1200;
+}
+
+.sidebar__page {
+  position: relative;
   z-index: 1100;
 }
 
 .sidebar__btn-open, .sidebar__btn-close {
   border: 0;
   background: none;
-  color: white;
+  color: #DDD;
 }
 
 .sidebar__btn-open:hover, .sidebar__btn-close:hover {
@@ -26,6 +34,11 @@
 
 .sidebar__btn-open {
   font-size: 2em;
+  position: absolute;
+  top: 0;
+  margin: 0 20px;
+  padding: 10px 20px;
+  z-index: 1000;
 }
 
 .sidebar__btn-close {
@@ -42,33 +55,30 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1100;
 }
 
 
 /*  STYLES TO KEEP HERE  */
 
 .sidebar__menu {
-  background-color: #464D59;
   width: 300px;
 }
 
 .sidebar__btn-open {
-  position: relative;
-  font-size: 2.5em;
-  margin-bottom: 15px;
+  top: 50px;
 }
 
 .sidebar__nav {
   display: flex;
   flex-direction: column;
-  text-align: left;
 }
 .sidebar__nav a, .sidebar__nav a:visited, .sidebar__nav a:active {
   font-size: 1.15em;
   padding: .75em;
-  color: white;
+  color: #EEE;
   text-decoration: none;
+  font-weight: 500;
 }
 .sidebar__nav a:hover {
   color: #61DAFB;
