@@ -1,4 +1,4 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" style="width:60px;position:relative;top:10px;left:-10px;margin-right:-10px;" /> react-sidebar
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="60px" /> react-sidebar
 ===============
 
 Flexible React Sidebar Component 🤘
