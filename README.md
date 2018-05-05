@@ -1,7 +1,7 @@
-<span style="width:60px;display:inline-block;"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" /></span> react-sidebar
+React Sidebar
 ===============
 
-Flexible React Sidebar Component 🤘
+Flexible React Sidebar Component
 
 [![NPM](https://img.shields.io/npm/v/@alexcasche/react-sidebar.svg)](https://www.npmjs.com/package/@alexcasche/react-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -9,12 +9,15 @@ Install
 ---------------
 
 ```bash
-npm install --save react-sidebar
-yarn add react-sidebar
+npm install --save @alexcasche/react-sidebar
+yarn add @alexcasche/react-sidebar
 ```
 
 Usage
 ---------------
+- Import the module along with the base styles
+- Pass desired props to component using spread operator
+<br/><br/>
 
 ```jsx
 import React, { Component } from 'react'
@@ -41,31 +44,41 @@ class ReactSidebar extends Component {
 
 Examples
 ---------------
-<a style="width:130px;display:block;border:2px solid black;border-radius:4px;padding:8px 15px 6px;">
-<img style="max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/9/93/Black-Large.png">
-</a>
+- Demo - https://github.com/alexcasche
+- Sandbox - https://github.com/alexcasche
 
 Props
 ---------------
+
+| Prop              | Type        | Default     |   Description: Options   |
+|-------------------|-------------|-------------|-------------|
+| `side`            |  _string_   |  `left`     | Menu location: `left` `right` |
+| `effect`          |  _string_   |  `slide`    | Transition effect: `slide` `push` `reveal` `fall` `shrink` |
+| `speed`           |  _number_   |  `500`      | Transition speed (milliseconds)  |
+| `timing`          |  _string_   |  `ease`     | Transition timing function:   |
+| `overlay`         |  _boolean_  |  `true`     | Display overlay: `true` `false` |
 
 Classes
 ---------------
 
 Development
 ---------------
-Clone repo
+Follow these steps to setup a local development environment.  Use yarn or npm - not both.
+1. Clone the repo from Github
 
 ```bash
 git clone https://github.com/alexcasche/react-sidebar
 ```
 
-Setup rollup and start file watch
+2. Setup project & start rollup watch
+
 ```bash
 npm install && npm start
 yarn install && yarn add
 ```
 
-Setup react app and start dev server
+3. Setup react app & start dev server
+
 ```bash
 cd example
 npm install && npm start

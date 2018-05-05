@@ -1,4 +1,111 @@
-export function btnStyles(props) {
+export function getStyles(props, state) {
+  const container = containerStyles(props, state)
+  const menu = menuStyles(props, state)
+  const page = pageStyles(props, state)
+  const btn = btnStyles(props)
+  const overlay = overlayStyles(props, state)
+  return {
+    container: container,
+    menu: menu,
+    page: page,
+    btn: btn,
+    overlay: overlay
+  }
+}
+
+function containerStyles(props, state) {
+  const { side, effect, speed, timing } = props
+  const { isOpen, sliding, menuWidth } = state
+  return {
+    ...containerTransform(side, effect, isOpen, menuWidth),
+    ...containerTransition(effect, speed, timing, sliding)
+  }
+}
+function containerTransform(side, effect, isOpen, menuWidth) {
+  let start; let finish;
+  if(effect === 'push') {
+    start = side === ''
+    finish = side === 'left' ? `translate3d(${menuWidth}, 0, 0)` : `translate3d(-${menuWidth}, 0, 0)`
+  }
+  return { transform: !isOpen ? start : finish }
+}
+function containerTransition(effect, speed, timing, sliding) {
+  let transition;
+  if(effect === 'push') {
+    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
+  }
+  return { transition: transition }
+}
+
+function menuStyles(props, state) {
+  const { side, effect, speed, timing } = props
+  const { isOpen, sliding } = state
+  return {
+    visibility: isOpen || sliding ? 'visible' : 'hidden',
+    ...menuPosition(side, effect),
+    ...menuTransform(side, effect, isOpen),
+    ...menuTransition(effect, speed, timing, sliding)
+  }
+}
+function menuPosition(side, effect) {
+  let left; let right; let zIndex;
+  left = side === 'left' ? 0 : ''
+  right = side === 'right' ? 0 : ''
+  if(effect === "reveal" || effect === "fall") {
+    zIndex = '1000'
+  }
+  return { left: left, right: 0, zIndex: zIndex }
+}
+function menuTransform(side, effect, isOpen) {
+  let start; let finish;
+  if(effect === 'slide' || effect === 'shrink' || effect === 'push') {
+    start = side === 'left' ? 'translate3d(-100%, 0, 0)' : 'translate3d(100%, 0, 0)'
+    finish = 'translateX(0)'
+  }
+  if(effect === 'fall') {
+    start = side === 'left' ? 'translate3d(0, -100%, 0)' : 'translate3d(0, -100%, 0)'
+    finish = side === 'left' ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)'
+  }
+  if(effect === 'push') {
+    finish = start
+  }
+  return { transform: !isOpen ? start : finish }
+}
+function menuTransition(effect, speed, timing, sliding) {
+  let transition;
+  if(effect !== 'push') {
+    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
+  }
+  return { transition: transition }
+}
+
+function pageStyles(props, state) {
+  const { side, effect, speed, timing } = props
+  const { isOpen, sliding, menuWidth } = state
+  return {
+    ...pageTransform(side, effect, isOpen, menuWidth),
+    ...pageTransition(effect, speed, timing, sliding)
+  }
+}
+function pageTransition(effect, speed, timing, sliding) {
+  let transition;
+  if(effect === 'reveal' || effect === 'fall' || effect === 'shrink') {
+    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
+  }
+  return { transition: transition }
+}
+function pageTransform(side, effect, isOpen, menuWidth) {
+  let start; let finish;
+  if(effect === 'reveal' || effect === 'fall') {
+    finish = side === 'left' ? `translate3d(${menuWidth}, 0, 0)` : `translate3d(-${menuWidth}, 0, 0)`
+  }
+  if(effect === 'shrink') {
+    finish = `translate3d(0, 0, -${menuWidth})`
+  }
+  return { transform: !isOpen ? start : finish }
+}
+
+function btnStyles(props) {
   let left; let right;
   const { side } = props
   return {
@@ -7,72 +114,12 @@ export function btnStyles(props) {
   }
 }
 
-export function menuStyles(props, state) {
-  const { menuColor, side, effect, speed, timing } = props
-  console.log(menuColor)
-  const { isOpen, sliding } = state
-  return {
-    backgroundColor: menuColor,
-    ...menuPosition(side, effect),
-    ...menuTransform(side, effect, isOpen),
-    ...menuTransition(speed, timing, sliding)
-  }
-}
-function menuPosition(side, effect) {
-  let left; let right; let zIndex;
-  left = side === 'left' ? 0 : ''
-  right = side === 'right' ? 0 : ''
-  if(effect === "reveal") {
-    zIndex = '1000'
-  }
-  return { left: left, right: 0, zIndex: zIndex }
-}
-function menuTransform(side, effect, isOpen) {
-  let start; let finish;
-  if(effect === 'slide-out' || effect === 'push-out') {
-    start = side === 'left' ? 'translateX(-100%)' : 'translateX(100%)'
-    finish = 'translateX(0)'
-  }
-  if(effect === 'slide-down' || effect === 'push-down') {
-    start = side === 'left' ? 'translate(0, -100%)' : 'translate(0, -100%)'
-    finish = 'translate(0, 0)'
-  }
-  return { transform: !isOpen ? start : finish }
-}
-function menuTransition(speed, timing, sliding) {
-  let transition;
-  transition = sliding ? `transform ${speed}ms ${timing}` : 'none'
-  return { transition: transition }
-}
-
-export function overlayStyles(props, state) {
-  const { speed, timing, showOverlay, overlayColor, overlayOpacity } = props
+function overlayStyles(props, state) {
+  const { speed, timing, overlay } = props
   const { isOpen } = state
   return { 
-    backgroundColor: overlayColor,
-    opacity: isOpen && showOverlay ? overlayOpacity : 0,
+    opacity: isOpen && overlay ? .75 : 0,
     pointerEvents: isOpen ? 'auto' : 'none',
-    transition: `opacity ${speed} ${timing}`
+    transition: `all ${speed}ms ${timing}`
   }
-}
-
-export function pageStyles(props, state) {
-  const { side, effect, speed, timing } = props
-  const { isOpen, sliding, menuWidth } = state
-  return {
-    ...pageTransform(side, effect, isOpen, menuWidth),
-    ...pageTransition(speed, timing, sliding)
-  }
-}
-function pageTransition(speed, timing, sliding) {
-  let transition;
-  transition = sliding ? `transform ${speed}ms ${timing}` : 'none'
-  return { transition: transition }
-}
-function pageTransform(side, effect, isOpen, menuWidth) {
-  let start; let finish;
-  if(effect === 'push-out' || effect === 'push-down' || effect === 'reveal') {
-    finish = side === 'left' ? `translateX(${menuWidth})` : `translateX(-${menuWidth})`
-  }
-  return { transform: !isOpen ? start : finish }
 }

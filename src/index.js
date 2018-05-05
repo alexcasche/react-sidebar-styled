@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { propTypes, defaultProps } from './props'
-import { btnStyles, menuStyles, overlayStyles, pageStyles } from './utils'
+import { getStyles } from './utils'
 import './style.scss'
 
 export default class Sidebar extends Component {
@@ -28,21 +28,23 @@ export default class Sidebar extends Component {
     this.setState({menuWidth: menuWidth})
   }
   render() {
+    const styles = getStyles(this.props, this.state)
     return (
-      <div className="sidebar" style={{backgroundColor: this.props.menuColor}}>
-        <div className="sidebar__menu" ref={this.menuRef} style={menuStyles(this.props, this.state)}>
-          <button className="sidebar__btn-close">
-            <i className="fas fa-times" />
+      <div className="sidebar">
+        <div className="sidebar__container" style={styles.container}>
+          <div className="sidebar__menu" ref={this.menuRef} style={styles.menu}>
+            <button className="sidebar__btn-close">
+              <i className="fas fa-times" />
+            </button>
+            {this.props.children[0]}
+          </div>
+          <div className="sidebar__page" style={styles.page}>
+          <button className="sidebar__btn-open" onClick={this.toggleMenu} style={styles.btn}>
+            <i className="fas fa-bars" />
           </button>
-          {this.props.children[0]}
-        </div>
-        <div className="sidebar__page" style={pageStyles(this.props, this.state)}>
-        <button className="sidebar__btn-open" onClick={this.toggleMenu} style={btnStyles(this.props)}>
-          <i className="fas fa-bars" />
-        </button>
-          <div className="sidebar__overlay" onClick={this.toggleMenu} style={overlayStyles(this.props, this.state)} />
-          {this.props.children[1]}
-          <div className="sidebar__overlay" onClick={this.toggleMenu} style={overlayStyles(this.props, this.state)} />
+            {this.props.children[1]}
+            <div className="sidebar__overlay" onClick={this.toggleMenu} style={styles.overlay} />
+          </div>
         </div>
       </div>
     )

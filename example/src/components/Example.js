@@ -6,9 +6,7 @@ import './Example.css'
 
 const options = {
   side: "left",
-  effect: "slide-out",
-  speed: 250,
-  timing: 'ease-in-out'
+  effect: "slide"
 }
 
 export default class Example extends Component {
