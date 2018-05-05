@@ -1,6 +1,6 @@
 {
-  "name": "@alexcasche/react-sidebar",
-  "homepage": "https://alexcasche.github.io/@alexcasche/react-sidebar",
+  "name": "react-sidebar",
+  "homepage": "https://alexcasche.github.io/react-sidebar",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
