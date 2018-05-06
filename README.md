@@ -9,8 +9,8 @@ Install
 ---------------
 
 ```bash
-npm install --save @alexcasche/react-sidebar
-yarn add @alexcasche/react-sidebar
+npm install --save @reactrix/react-sidebar
+yarn add @reactrix/react-sidebar
 ```
 
 Usage
@@ -21,8 +21,8 @@ Usage
 
 ```jsx
 import React, { Component } from 'react'
-import ReactSidebar from '@alexcasche/react-sidebar'
-import '@alexcasche/react-sidebar/style.css'
+import ReactSidebar from '@reactrix/react-sidebar'
+import '@reatrix/react-sidebar/style.css'
 
 class ReactSidebar extends Component {
   render () {
@@ -44,7 +44,7 @@ class ReactSidebar extends Component {
 
 Examples
 ---------------
-- Demo - https://github.com/alexcasche
+- Demo - https://alexcasche.github.io/react-sidebar/
 - Sandbox - https://github.com/alexcasche
 
 Props
@@ -53,7 +53,7 @@ Props
 | Prop              | Type        | Default     |   Description: Options   |
 |-------------------|-------------|-------------|-------------|
 | `side`            |  _string_   |  `left`     | Menu location: `left` `right` |
-| `effect`          |  _string_   |  `slide`    | Transition effect: `slide` `push` `reveal` `fall` `shrink` |
+| `effect`          |  _string_   |  `slide`    | Transition effect: `slide` `push` `fall` `reveal` `diverge` `uncover` `shrink` `grow` `press` |
 | `speed`           |  _number_   |  `500`      | Transition speed (milliseconds)  |
 | `timing`          |  _string_   |  `ease`     | Transition timing function:   |
 | `overlay`         |  _boolean_  |  `true`     | Display overlay: `true` `false` |

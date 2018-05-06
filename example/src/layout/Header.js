@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header">
       <img className="header__logo" src={logo} alt="logo" />
       <p>React</p>
-      <a href="https://github.com/alexcasche" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/alexcasche/react-sidebar" target="_blank" rel="noopener noreferrer">
         <i className="fab fa-github-alt" />
       </a>
       <a href="https://npmjs.org/~alexcasche" target="_blank" rel="noopener noreferrer">

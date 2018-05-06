@@ -19,12 +19,10 @@
   "jsnext:main": "index.es.js",
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "rename": "mv index.css style.css",
-    "clean": "rm index.es.css index.es.js",
-    "copy": "cp style.css example/src/",
-    "build": "rollup -c && yarn run rename && yarn run clean && yarn run copy",
+    "copy": "cp index.css example/src/",
+    "build": "rollup -c && yarn run copy",
     "start": "yarn run build && rollup -c -w",
-    "prepare": "yarn run build && yarn run clean",
+    "prepare": "yarn run build && yarn run copy",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
@@ -74,7 +72,7 @@
   "files": [
     "index.js",
     "index.es.js",
-    "style.css",
-    "style.es.css"
+    "index.css",
+    "index.es.css"
   ]
 }

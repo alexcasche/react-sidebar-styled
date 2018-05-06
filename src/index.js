@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { propTypes, defaultProps } from './props'
 import { getStyles } from './utils'
-import './style.scss'
+import './index.scss'
 
 export default class Sidebar extends Component {
   static propTypes = propTypes
@@ -28,9 +28,10 @@ export default class Sidebar extends Component {
     this.setState({menuWidth: menuWidth})
   }
   render() {
-    const styles = getStyles(this.props, this.state)
+    const styles = getStyles(this.state, this.props)
+    const openClass = this.state.isOpen ? ' sidebar--open': ''
     return (
-      <div className="sidebar">
+      <div className={`sidebar ${openClass}`} style={styles.sidebar}>
         <div className="sidebar__container" style={styles.container}>
           <div className="sidebar__menu" ref={this.menuRef} style={styles.menu}>
             <button className="sidebar__btn-close">

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Sidebar from 'react-sidebar'
+import Sidebar from '@reactrix/react-sidebar'
 import Menu from './Menu'
 import Layout from '../layout/Layout'
-import './Example.css'
 
 const options = {
   side: "left",

@@ -1,10 +1,12 @@
-export function getStyles(props, state) {
-  const container = containerStyles(props, state)
-  const menu = menuStyles(props, state)
-  const page = pageStyles(props, state)
+export function getStyles(state, props) {
+  const sidebar = sidebarStyles(state)
+  const container = containerStyles(state, props)
+  const menu = menuStyles(state, props)
+  const page = pageStyles(state, props)
   const btn = btnStyles(props)
-  const overlay = overlayStyles(props, state)
+  const overlay = overlayStyles(state, props)
   return {
+    sidebar: sidebar,
     container: container,
     menu: menu,
     page: page,
@@ -13,15 +15,24 @@ export function getStyles(props, state) {
   }
 }
 
-function containerStyles(props, state) {
-  const { side, effect, speed, timing } = props
-  const { isOpen, sliding, menuWidth } = state
+function sidebarStyles(state) {
+  const { isOpen, sliding } = state  
   return {
-    ...containerTransform(side, effect, isOpen, menuWidth),
-    ...containerTransition(effect, speed, timing, sliding)
+    overflowY: isOpen || sliding ? 'hidden' : '',
+    maxHeight: isOpen || sliding ? '100vh' : ''
   }
 }
-function containerTransform(side, effect, isOpen, menuWidth) {
+
+function containerStyles(state, props) {
+  const { isOpen, sliding, menuWidth } = state
+  const { side, effect, speed, timing } = props
+  return {
+    perspectiveOrigin: side === 'left' ? '0% 50%' : '100% 50%',
+    ...containerTransform(isOpen, menuWidth, side, effect),
+    transition: sliding ? `all ${speed}ms ${timing}` : 'none'
+  }
+}
+function containerTransform(isOpen, menuWidth, side, effect) {
   let start; let finish;
   if(effect === 'push') {
     start = side === ''
@@ -29,80 +40,73 @@ function containerTransform(side, effect, isOpen, menuWidth) {
   }
   return { transform: !isOpen ? start : finish }
 }
-function containerTransition(effect, speed, timing, sliding) {
-  let transition;
-  if(effect === 'push') {
-    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
-  }
-  return { transition: transition }
-}
 
-function menuStyles(props, state) {
+function menuStyles(state, props) {
+  const { isOpen, sliding, menuWidth } = state
   const { side, effect, speed, timing } = props
-  const { isOpen, sliding } = state
   return {
     visibility: isOpen || sliding ? 'visible' : 'hidden',
     ...menuPosition(side, effect),
-    ...menuTransform(side, effect, isOpen),
-    ...menuTransition(effect, speed, timing, sliding)
+    ...menuTransform(isOpen, menuWidth, side, effect),
   }
 }
 function menuPosition(side, effect) {
   let left; let right; let zIndex;
   left = side === 'left' ? 0 : ''
   right = side === 'right' ? 0 : ''
-  if(effect === "reveal" || effect === "fall") {
-    zIndex = '1000'
+  if(['fall', 'reveal', 'diverge', 'uncover', 'grow'].indexOf(effect) !== -1) {
+    zIndex = '1'
   }
-  return { left: left, right: 0, zIndex: zIndex }
+  return { left: left, right: right, zIndex: zIndex }
 }
-function menuTransform(side, effect, isOpen) {
+function menuTransform(isOpen, menuWidth, side, effect) {
   let start; let finish;
-  if(effect === 'slide' || effect === 'shrink' || effect === 'push') {
+  if(['slide', 'push', 'shrink', 'press'].indexOf(effect) !== -1) {
     start = side === 'left' ? 'translate3d(-100%, 0, 0)' : 'translate3d(100%, 0, 0)'
-    finish = 'translateX(0)'
+  }
+  if(effect === 'push') {
+    finish = start
+  }
+  if(effect === 'uncover') {
+    start = side === 'left' ? 'translate3d(-50%, 0, 0)' : 'translate3d(50%, 0, 0)'
   }
   if(effect === 'fall') {
     start = side === 'left' ? 'translate3d(0, -100%, 0)' : 'translate3d(0, -100%, 0)'
     finish = side === 'left' ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)'
   }
-  if(effect === 'push') {
-    finish = start
+  if(effect === 'diverge') {
+    start = side ==='left' ? 'translate3d(100%, 0, 0)' : 'translate3d(-100%, 0, 0)'
+    finish = side === 'left' ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)'
+  }
+  if(effect === 'grow') {
+    start = `translate3d(0, 0, -${menuWidth})`
   }
   return { transform: !isOpen ? start : finish }
-}
-function menuTransition(effect, speed, timing, sliding) {
-  let transition;
-  if(effect !== 'push') {
-    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
-  }
-  return { transition: transition }
 }
 
-function pageStyles(props, state) {
-  const { side, effect, speed, timing } = props
+function pageStyles(state, props) {
   const { isOpen, sliding, menuWidth } = state
+  const { side, effect, speed, timing } = props
   return {
-    ...pageTransform(side, effect, isOpen, menuWidth),
-    ...pageTransition(effect, speed, timing, sliding)
+    ...pageTransform(isOpen, menuWidth, side, effect)
   }
 }
-function pageTransition(effect, speed, timing, sliding) {
-  let transition;
-  if(effect === 'reveal' || effect === 'fall' || effect === 'shrink') {
-    transition = sliding ? `all ${speed}ms ${timing}` : 'none'
-  }
-  return { transition: transition }
-}
-function pageTransform(side, effect, isOpen, menuWidth) {
-  let start; let finish;
-  if(effect === 'reveal' || effect === 'fall') {
+function pageTransform(isOpen, menuWidth, side, effect) {
+  let start; let finish; let origin;
+  if(['fall', 'reveal', 'diverge', 'uncover', 'grow'].indexOf(effect) !== -1) {
     finish = side === 'left' ? `translate3d(${menuWidth}, 0, 0)` : `translate3d(-${menuWidth}, 0, 0)`
   }
-  if(effect === 'shrink') {
+  if(['shrink'].indexOf(effect) !== -1) {
     finish = `translate3d(0, 0, -${menuWidth})`
   }
-  return { transform: !isOpen ? start : finish }
+  if(effect === 'press') {
+    finish = side === 'left' ? 'rotateY(-10deg)' : 'rotateY(10deg)'
+    origin = side === 'left' ? '100% 50%' : '0% 50%'
+  }
+  return { 
+    transform: !isOpen ? start : finish,
+    transformOrigin: origin
+  }
 }
 
 function btnStyles(props) {
@@ -114,12 +118,11 @@ function btnStyles(props) {
   }
 }
 
-function overlayStyles(props, state) {
-  const { speed, timing, overlay } = props
+function overlayStyles(state, props) {
   const { isOpen } = state
+  const { speed, timing, overlay } = props
   return { 
     opacity: isOpen && overlay ? .75 : 0,
-    pointerEvents: isOpen ? 'auto' : 'none',
-    transition: `all ${speed}ms ${timing}`
+    pointerEvents: isOpen ? 'auto' : 'none'
   }
 }

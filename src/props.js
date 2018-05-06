@@ -1,18 +1,19 @@
 import { PropTypes as t } from 'prop-types'
 
 const propTypes = {
-  side: t.oneOf(['left', 'right']),
   effect: t.oneOf([
-    'slide', 'push', 'reveal', 'fall',
-    'shrink', 'grow'
+    'slide', 'push', 'fall', 
+    'reveal', 'diverge', 'uncover',
+    'shrink', 'grow', 'press'
   ]),
+  side: t.oneOf(['left', 'right']),
   speed: t.number,
   timing: t.string,
   overlay: t.bool
 }
 const defaultProps = {
-  side: 'left',
   effect: 'slide',
+  side: 'left',
   speed: 500,
   timing: 'ease',
   overlay: true

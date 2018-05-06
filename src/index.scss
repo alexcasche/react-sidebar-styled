@@ -1,15 +1,18 @@
-/*  STYLES TO MOVE INTO COMPONENT  */
-
 .sidebar {
   position: relative;
-  perspective: 1500px;
   height: 100%;
-  max-height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  width: 100%;
+  & > * {
+    box-sizing: border-box;
+  }
 }
-
+.sidebar__container {
+  transition: inherit;
+  perspective: 1500px;
+  max-height: inherit;
+}
 .sidebar__menu {
+  width: 300px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -19,8 +22,10 @@
   background-color: #464D59;
   padding: 3em 0;
   transform-style: preserve-3d;
+  transition: inherit;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
-
 .sidebar__page {
   height: 100%;
   position: relative;
@@ -28,39 +33,36 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   transform-origin: center;
+  transition: inherit;
+  overflow-y: hidden;
+  max-height: inherit;
 }
 .sidebar__btn-open, .sidebar__btn-close {
+  position: absolute;
+  top: 0;
   border: 0;
   background: none;
   color: #DDD;
+  &:hover {
+    color: #61DAFB;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
 }
-
-.sidebar__btn-open:hover, .sidebar__btn-close:hover {
-  color: #61DAFB;
-  cursor: pointer;
-}
-
-.sidebar__btn-open:focus, .sidebar__btn-close:focus {
-  outline: none;
-}
-
 .sidebar__btn-open {
+  top: 50px;
   font-size: 2em;
-  position: absolute;
-  top: 0;
   margin: 0 20px;
   padding: 10px 20px;
   z-index: 1000;
 }
-
 .sidebar__btn-close {
-  position: absolute;
-  top: 0;
   right: 0;
   font-size: 1.15em;
   padding: .7em 1em;
 }
-
 .sidebar__overlay {
   position: fixed;
   top: 0;
@@ -69,19 +71,9 @@
   left: 0;
   z-index: 1100;
   background-color: rgba(32, 35, 42, 0.75);
+  transition: inherit;
+  max-height: inherit;
 }
-
-
-/*  STYLES TO KEEP HERE  */
-
-.sidebar__menu {
-  width: 300px;
-}
-
-.sidebar__btn-open {
-  top: 50px;
-}
-
 .sidebar__nav {
   display: flex;
   flex-direction: column;
@@ -93,14 +85,14 @@
   text-decoration: none;
   font-weight: 500;
   border-top: 1px solid #393E48;
-}
-.sidebar__nav a:last-child {
-  border-bottom: 1px solid #393E48;
-}
-.sidebar__nav a:hover {
-  background-color: #393E48;
-  color: #61DAFB;
-}
-.sidebar__nav i {
-  margin-right: 1em;
+  &:last-child {
+    border-bottom: 1px solid #393E48;
+  }
+  &:hover {
+    background-color: #393E48;
+    color: #61DAFB;
+  }
+  i {
+    margin-right: 1em;
+  }
 }
