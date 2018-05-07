@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import marked from 'marked'
-import readMe from '@reactrix/react-sidebar/README.md'
+import readMe from 'reactrix-sidebar/README.md'
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-light.css'
 
@@ -11,7 +11,6 @@ export default class Details extends PureComponent {
       markdown: null
     }
   }
-
   componentWillMount() {
     fetch(readMe)
       .then(response => {

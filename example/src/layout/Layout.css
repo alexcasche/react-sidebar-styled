@@ -178,6 +178,7 @@ button:hover {
   margin-bottom: 10px;
 }
 .details__markdown table {
+  margin: 40px 0;
   text-align: left;
   border-collapse: collapse;
   width: 100%;

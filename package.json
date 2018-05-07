@@ -1,10 +1,10 @@
 {
-  "name": "react-sidebar",
-  "version": "0.0.0",
+  "name": "reactrix-sidebar",
+  "version": "0.0.4",
   "description": "Flexible React Sidebar Component",
   "author": "alexcasche",
   "license": "MIT",
-  "repository": "alexcasche/react-sidebar",
+  "repository": "alexcasche/reactrix-sidebar",
   "homepage": "https://github.com/alexcasche/react-sidebar#readme",
   "keywords": [
     "react",
@@ -28,8 +28,7 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -39,7 +38,6 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "concurrently": "^3.5.1",
     "cross-env": "^5.1.4",
     "cssnano": "^3.10.0",
     "eslint-config-standard": "^11.0.0",
@@ -63,11 +61,7 @@
     "rollup-plugin-peer-deps-external": "^2.0.0",
     "rollup-plugin-postcss": "^1.6.1",
     "rollup-plugin-scss": "^0.4.0",
-    "rollup-plugin-url": "^1.3.0",
-    "shelljs": "^0.8.1"
-  },
-  "dependencies": {
-    "classnames": "^2.2.5"
+    "rollup-plugin-url": "^1.3.0"
   },
   "files": [
     "index.js",

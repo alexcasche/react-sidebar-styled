@@ -4,7 +4,7 @@ import { BrowserRouter, Link } from 'react-router-dom'
 const Menu  = () => {
   return (
     <BrowserRouter>
-      <nav className="sidebar__nav">
+      <nav>
         <Link to="/dashboard"><i className="fas fa-tachometer-alt"/>Dashboard</Link>
         <Link to="/favorites"><i className="far fa-star"/>Favorites</Link>
         <Link to="/alerts"><i className="far fa-bell"/>Alerts</Link>

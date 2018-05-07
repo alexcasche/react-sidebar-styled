@@ -3,14 +3,16 @@ React Sidebar
 
 Flexible React Sidebar Component
 
-[![NPM](https://img.shields.io/npm/v/@alexcasche/react-sidebar.svg)](https://www.npmjs.com/package/@alexcasche/react-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/reactrix-sidebar.svg)](https://www.npmjs.com/package/reactrix-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Travis](https://img.shields.io/travis/alexcasche/reactrix-sidebar.svg)](https://img.shields.io/travis/alexcasche/reactrix-sidebar)
+
 
 Install
 ---------------
 
 ```bash
-npm install --save @reactrix/react-sidebar
-yarn add @reactrix/react-sidebar
+npm install --save reactrix-sidebar
+yarn add reactrix-sidebar
 ```
 
 Usage
@@ -21,8 +23,8 @@ Usage
 
 ```jsx
 import React, { Component } from 'react'
-import ReactSidebar from '@reactrix/react-sidebar'
-import '@reatrix/react-sidebar/style.css'
+import ReactSidebar from 'reactrix-sidebar'
+import 'reactrix-sidebar/index.css'
 
 class ReactSidebar extends Component {
   render () {
@@ -42,10 +44,24 @@ class ReactSidebar extends Component {
 }
 ```
 
+Gotcha
+---------------
+⚠️ The component uses FontAwesome icons by default. If you're not passing in custom icons, make sure to include the link below in the head tag of your index.html file.
+
+```html
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+```
+
+Features
+---------------
+- Only two peer depencies (react/prop-types)
+- Large selection of smooth transitions
+- Easy to use BEM class hooks
+
 Examples
 ---------------
-- Demo - https://alexcasche.github.io/react-sidebar/
-- Sandbox - https://github.com/alexcasche
+- Demo - https://alexcasche.github.io/reactrix-sidebar/
+- Sandbox - https://codesandbox.io/s/jlzno327x9
 
 Props
 ---------------
@@ -57,9 +73,42 @@ Props
 | `speed`           |  _number_   |  `500`      | Transition speed (milliseconds)  |
 | `timing`          |  _string_   |  `ease`     | Transition timing function:   |
 | `overlay`         |  _boolean_  |  `true`     | Display overlay: `true` `false` |
+| `buttons`         |  _array_    |  `null`     | Custom icons: `[ component, component ]`|
+
+### Custom Icons  ##
+Set the icons prop equal to an array consisting of two components.
+
+```jsx
+function openButton {
+  return <i className="fas fa-times" />
+}
+function closeButton {
+  return <i className="fas fa-bars" />
+}
+...
+  const options = {
+    icons: [ openButton, closeButton ]
+  }
+...
+  <Sidebar {...options} />
+...
+
+```
 
 Classes
 ---------------
+| Class                  | Description        |
+|------------------------|--------------------|
+| `.sidebar`             |  Outer component wrapper |
+| `.sidebar--open`       |  Outer component open  |
+| `.sidebar__cotainer`   |  Inner component wrapper  |
+| `.sidebar__menu`       |  Outer menu wrapper  |
+| `.sidebar__nav`        |  Inner menu wrapper  |
+| `.sidebar__page`       |  Page content wrapper  |
+| `.sidebar__overlay`    |  Page overlay  |
+| `.sidebar__btn-open`   |  Open menu button  |
+| `.sidebar__btn-close`  |  Close menu button  |
+
 
 Development
 ---------------

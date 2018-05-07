@@ -1,11 +1,11 @@
 {
-  "name": "@reactrix/react-sidebar",
-  "homepage": "https://alexcasche.github.io/react-sidebar",
+  "name": "reactrix-sidebar-example",
+  "homepage": "https://alexcasche.github.io/reactrix-sidebar",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@reactrix/react-sidebar": "link:..",
+    "reactrix-sidebar": "link:..",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

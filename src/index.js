@@ -6,8 +6,8 @@ import './index.scss'
 export default class Sidebar extends Component {
   static propTypes = propTypes
   static defaultProps = defaultProps
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isOpen: false,
       sliding: false,
@@ -27,22 +27,27 @@ export default class Sidebar extends Component {
     })
     this.setState({menuWidth: menuWidth})
   }
+  
   render() {
     const styles = getStyles(this.state, this.props)
     const openClass = this.state.isOpen ? ' sidebar--open': ''
+    const ButtonOpen = this.props.icons[0]
+    const ButtonClose = this.props.icons[1]
     return (
       <div className={`sidebar ${openClass}`} style={styles.sidebar}>
         <div className="sidebar__container" style={styles.container}>
           <div className="sidebar__menu" ref={this.menuRef} style={styles.menu}>
             <button className="sidebar__btn-close">
-              <i className="fas fa-times" />
+              <ButtonOpen />
             </button>
-            {this.props.children[0]}
+            <div className="sidebar__nav">
+              {this.props.children[0]}
+            </div>
           </div>
           <div className="sidebar__page" style={styles.page}>
-          <button className="sidebar__btn-open" onClick={this.toggleMenu} style={styles.btn}>
-            <i className="fas fa-bars" />
-          </button>
+            <button className="sidebar__btn-open" onClick={this.toggleMenu} style={styles.btn}>
+              <ButtonClose />
+            </button>
             {this.props.children[1]}
             <div className="sidebar__overlay" onClick={this.toggleMenu} style={styles.overlay} />
           </div>
