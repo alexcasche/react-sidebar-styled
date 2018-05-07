@@ -117,6 +117,7 @@ button:hover {
   pointer-events: none;
 }
 .details {
+  color: #21242B;
   background-color: #FAFAFA;
   padding: 50px 20px 80px;
 }
