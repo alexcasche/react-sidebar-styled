@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@alexcasche/react-sidebar@link:..":
-  version "0.0.0"
-  uid ""
-
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -5717,6 +5713,10 @@ react@^16.1.1, react@^16.2.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+"reactrix-sidebar@link:..":
+  version "0.0.0"
+  uid ""
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
