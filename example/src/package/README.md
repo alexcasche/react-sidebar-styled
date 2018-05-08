@@ -3,8 +3,8 @@ Reactrix Flex
 
 Lightweight Flex Component For React
 
-[![NPM](https://img.shields.io/npm/v/reactrix-flex.svg)](https://www.npmjs.com/package/reactrix-flex) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Travis](https://img.shields.io/travis/alexcasche/reactrix-flex.svg)](https://img.shields.io/travis/alexcasche/reactrix-flex)
+[![NPM](https://img.shields.io/npm/v/reactrix-sidebar.svg)](https://www.npmjs.com/package/reactrix-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Travis](https://img.shields.io/travis/alexcasche/reactrix-sidebar.svg)](https://img.shields.io/travis/alexcasche/reactrix-sidebar)
 
 
 Install
@@ -20,7 +20,7 @@ Usage
 
 ```jsx
 import React, { Component } from 'react'
-import ReactrixFlex from 'reactrix-flex'
+import ReactFlex from 'reactrix-flex'
 
 class Flex extends Component {
   render () {
@@ -29,10 +29,10 @@ class Flex extends Component {
       rowItems: [ 2, 3, 4, 5]
     }
     return (
-      <ReactrixFlex {...options}>
+      <ReactFlex {...options}>
         <div>Flex Item</div>
         <div>Flex Item</div>
-      </ReactrixFlex>
+      </ReactFlex>
     )
   }
 }

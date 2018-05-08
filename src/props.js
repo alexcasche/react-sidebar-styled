@@ -2,27 +2,12 @@ import React from 'react';
 import { PropTypes as t } from 'prop-types'
 
 const propTypes = {
-  effect: t.oneOf([
-    'slide', 'push', 'fall', 
-    'reveal', 'diverge', 'uncover',
-    'shrink', 'grow', 'press'
-  ]),
-  side: t.oneOf(['left', 'right']),
-  speed: t.number,
-  timing: t.string,
-  overlay: t.bool,
-  icons: t.arrayOf(t.func)
+  breakPoints: t.arrayOf(t.number),
+  rowItems: t.arrayOf(t.number)
 }
 const defaultProps = {
-  effect: 'slide',
-  side: 'left',
-  speed: 500,
-  timing: 'ease',
-  overlay: true,
-  icons: [ 
-    () => <i className="fas fa-times" />, 
-    () => <i className="fas fa-bars" />
-  ]
+  breakPoints: [ 640, 900, 1280 ],
+  rowItems: [ 2, 3, 4 ]
 }
 
 export { propTypes, defaultProps }

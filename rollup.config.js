@@ -25,7 +25,7 @@ export default {
   plugins: [
     external(),
     postcss({
-      extract: true,
+      autoModules: true,
       plugins: [ cssnested(), cssnext(), cssnano() ]
     }),
     url(),

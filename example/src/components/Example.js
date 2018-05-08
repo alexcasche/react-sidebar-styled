@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import Sidebar from 'reactrix-sidebar'
+import Flex from '../package'
 import Layout from '../layout/Layout'
-import Menu from './Menu'
 
 const options = {
-  side: "left",
-  effect: "slide"
+  breakPoints: [ 640, 900, 1280 ],
+  rowItems: [ 2, 3, 4 ]
 }
 
 export default class Example extends Component {
@@ -18,10 +17,14 @@ export default class Example extends Component {
   }
   render () {
     return (
-      <Sidebar {...this.state}>
-        <Menu />
-        <Layout updateOption={this.updateOption} />
-      </Sidebar>
+      <Layout {...this.state} updateOption={this.updateOption}>
+        <Flex {...this.state}>
+          <div className="box">Item 1</div>
+          <div className="box">Item 2</div>
+          <div className="box">Item 3</div>
+          <div className="box">Item 4</div>
+        </Flex>
+      </Layout>
     )
   }
 }

@@ -5,9 +5,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #393E48;
 }
-button {
-  background-color: transparent;
-  border: none;
+* {
+  box-sizing: border-box;
 }
 button:focus {
   outline: none;
@@ -50,7 +49,7 @@ button:hover {
 .demo {
   position: relative;
   overflow: hidden;
-  padding: 20px 20px 80px;
+  padding: 20px 50px 80px;
   background-color: #282C34;
   text-align: center;
 }
@@ -65,56 +64,79 @@ button:hover {
   color: #DDD;
   font-weight: normal;
 }
-.demo__toggle button {
-  padding: .35em 0;
-  width: 75px;
-  background-color: #DDD;
-  color: #21242B;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 1em;
+.demo__options {
+  max-width: 1000px;
+  margin: 20px auto;
 }
-.demo__toggle button:hover {
-  background-color: white;
-}
-.demo__toggle button.active,
-.demo__toggle button.active:hover {
-  background-color: #58C1DE;
-  color: white;
-  pointer-events: none;
-}
-.demo__toggle--left {
-  border-radius: 5px 0 0 5px;
-}
-.demo__toggle--right {
-  border-radius: 0 5px 5px 0;
-}
-.demo__buttons {
+.demo__fieldset {
+  margin: 0 -20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 750px;
-  margin: 30px auto;
 }
-.demo__button {
-  padding: .5em 0;
-  width: 180px;
+.demo__fieldset > * {
+  margin: 15px 0;
+  flex-basis: 33%;
+  flex-grow: 1;
+}
+.demo__field {
+  padding: 0 20px;
+  display: flex;
+  min-width: 300px;
+}
+.demo__field > * {
+  flex-grow: 1;
+}
+.demo__field label {
+  flex-grow: 0;
+  line-height: 36px;
+  margin-right: 10px;
+  color: white;
+}
+.demo__field input {
+  padding: .375em .75em;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #292C34;
   background-color: #DDD;
-  color: #21242B;
+  border: 1px solid #BBB;
+  border-radius: 3px;
+  transition: all .25s ease-in-out;
+}
+.demo__field input:focus {
+  outline: none;
+  background-color: #FAFAFA;
+}
+.demo__field input::placeholder {
+  color: #636A71;
+}
+.demo__button--submit {
+  width: 180px;
+  padding: .5em 0;
+  background-color: #58C1DE;
+  color: white;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.1em;
   border-radius: 2px;
-  margin: 15px 20px;
+  border: none;
+  transition: all .25s ease-in-out;
 }
-.demo__button:hover {
-  background-color: white;
+.demo__button--submit:hover {
+  cursor: pointer;
+  background-color: #4EA3BD;
 }
-.demo__button.active, demo__button.active:hover {
-  background-color: #58C1DE;
-  color: white;
-  pointer-events: none;
+.demo__button--submit:focus {
+  outline: none;
+}
+.demo__errors {
+  margin-bottom: 30px;
+  padding: 10px;
+  background-color: #FFB9AE;
+  border: 2px solid #DA6856;
+  color: #962715;
+  border-radius: 3px;
 }
 .details {
   color: #21242B;
@@ -124,7 +146,7 @@ button:hover {
 .details__readme {
   position: relative;
   width: 100%;
-  max-width: 980px;
+  max-width: 1000px;
   margin: auto;
   border: 1px solid #DDD;
   background-color: white;

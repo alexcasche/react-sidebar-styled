@@ -1,56 +1,47 @@
 import React, { Component } from 'react'
 import { propTypes, defaultProps } from './props'
-import { getStyles } from './utils'
+import { shouldUpdate, getBreak, itemStyles } from './utils'
 import './index.scss'
 
-export default class Sidebar extends Component {
+export default class Flex extends Component {
   static propTypes = propTypes
   static defaultProps = defaultProps
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      sliding: false,
-      menuWidth: undefined
+      breakPoint: -1
     }
-    this.menuRef = React.createRef()
   }
-  toggleMenu = () => {
-    this.setState({ sliding: true, isOpen: !this.state.isOpen })
-    setTimeout(() => this.setState({ sliding: false }), this.props.speed)
+  setBreakPoint = () => {
+    if(shouldUpdate(this.state, this.props)) {
+      this.setState({...this.state, ...getBreak(this.props)})
+    }
   }
   componentDidMount() {
-    const menuWidth = `${this.menuRef.current.clientWidth}px`
-    const menuLinks = this.menuRef.current.querySelectorAll("a, button")
-    menuLinks.forEach((menuLink) => {
-      menuLink.addEventListener('click', this.toggleMenu)
-    })
-    this.setState({menuWidth: menuWidth})
+    this.setBreakPoint()
+    window.addEventListener('resize', () => this.setBreakPoint(this.state, this.props))
   }
-  
+  componentWillUpdate(nextProps, nextState) {
+    if(this.props !== nextProps) {
+      this.setState({...nextState, ...getBreak(nextProps)})
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setBreakPoint)
+  }
   render() {
-    const styles = getStyles(this.state, this.props)
-    const openClass = this.state.isOpen ? ' sidebar--open': ''
-    const ButtonOpen = this.props.icons[0]
-    const ButtonClose = this.props.icons[1]
+    const styles = itemStyles(this.state, this.props)
+    const flexItems = this.props.children.map((item, index) =>
+      <div key={index} className="flex__item" style={styles}>
+        <div className="flex__content">
+          {item}
+        </div>
+      </div>
+    );
     return (
-      <div className={`sidebar ${openClass}`} style={styles.sidebar}>
-        <div className="sidebar__container" style={styles.container}>
-          <div className="sidebar__menu" ref={this.menuRef} style={styles.menu}>
-            <button className="sidebar__btn-close">
-              <ButtonOpen />
-            </button>
-            <div className="sidebar__nav">
-              {this.props.children[0]}
-            </div>
-          </div>
-          <div className="sidebar__page" style={styles.page}>
-            <button className="sidebar__btn-open" onClick={this.toggleMenu} style={styles.btn}>
-              <ButtonClose />
-            </button>
-            {this.props.children[1]}
-            <div className="sidebar__overlay" onClick={this.toggleMenu} style={styles.overlay} />
-          </div>
+      <div className="flex">
+        <div className="flex__container">
+          {flexItems}
         </div>
       </div>
     )

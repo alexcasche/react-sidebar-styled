@@ -1,11 +1,11 @@
 {
-  "name": "reactrix-sidebar-example",
-  "homepage": "https://alexcasche.github.io/reactrix-sidebar",
+  "name": "reactrix-flex-example",
+  "homepage": "https://alexcasche.github.io/reactrix-flex",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "reactrix-sidebar": "link:..",
+    "reactrix-flex": "link:..",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

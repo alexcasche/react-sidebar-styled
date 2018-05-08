@@ -1,7 +1,7 @@
 {
   "name": "reactrix-flex",
-  "version": "0.0.1",
-  "description": "Lightweight Flex Component For React",
+  "version": "0.0.0",
+  "description": "React Grid Component",
   "author": "alexcasche",
   "license": "MIT",
   "repository": "alexcasche/reactrix-flex",
@@ -12,8 +12,7 @@
     "flex",
     "grid",
     "responsive",
-    "flexible",
-    "lightweight"
+    "flexible"
   ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",

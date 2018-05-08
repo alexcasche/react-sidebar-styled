@@ -1,33 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Demo = ({updateOption}) => {
-  const handleClick = (e, option) => {
-    e.target.parentNode.childNodes.forEach((el) => {
-      el.classList.remove('active')
-    })
-    e.target.classList.add('active')
-    updateOption(option)
+class Demo extends Component {
+  constructor() {
+    super()
+    this.state = {
+      errors: null
+    }
   }
-  return (
-    <div className="demo">
-      <h1>React <span>Sidebar</span></h1>
-      <div className='demo__toggle'>
-        <button onClick={(e) => handleClick(e, {side: 'left'})} className='demo__toggle--left active'>left</button>
-        <button onClick={(e) => handleClick(e, {side: 'right'})} className='demo__toggle--right'>right</button>
+  handleSubmit = () => {
+    const inputResults = validateInput()
+    if(inputResults.errors) this.setState({ errors: inputResults.errors })
+    else this.props.updateOption({
+      breakPoints: inputResults.breaks,
+      rowItems: inputResults.items
+    })
+  }
+  renderErrors = () => {
+    if(this.state.errors) return <div className="demo__errors">{this.state.errors}</div>
+    else return null
+  }
+  render() {
+    const { children, breakPoints, rowItems } = this.props;
+    return (
+      <div className="demo">
+        <h1>Reactrix <span>Flex</span></h1>
+        <div className="demo__options">
+          {this.renderErrors()}
+          <div className="demo__fieldset">
+            <div className="demo__field">
+              <input className="demo__input" placeholder={`Breaks: ${breakPoints.join(', ')}`} />
+            </div>
+            <div className="demo__field">
+              <input className="demo__input" placeholder={`Items: ${rowItems.join(', ')}`} />
+            </div>
+            <div className="demo__field">
+              <button className="demo__button--submit" onClick={() => this.handleSubmit()}>Submit</button>
+            </div>
+          </div>
+        </div>
+        {children}
       </div>
-      <div className="demo__buttons">
-        <button onClick={(e) => handleClick(e, {effect: 'slide'})} className='demo__button active'>Slide</button>
-        <button onClick={(e) => handleClick(e, {effect: 'push'})} className='demo__button'>Push</button>
-        <button onClick={(e) => handleClick(e, {effect: 'fall'})} className='demo__button'>Fall</button>
-        <button onClick={(e) => handleClick(e, {effect: 'reveal'})} className='demo__button'>Reveal</button>
-        <button onClick={(e) => handleClick(e, {effect: 'diverge'})} className='demo__button'>Diverge</button>
-        <button onClick={(e) => handleClick(e, {effect: 'uncover'})} className='demo__button'>Uncover</button>
-        <button onClick={(e) => handleClick(e, {effect: 'shrink'})} className='demo__button'>Shrink</button>
-        <button onClick={(e) => handleClick(e, {effect: 'grow'})} className='demo__button'>Grow</button>
-        <button onClick={(e) => handleClick(e, {effect: 'press'})} className='demo__button'>Press</button>
-      </div>
-    </div>
-  );
+    )
+  }
+}
+function validateInput() {
+  const inputs = document.querySelectorAll('.demo__input')
+  const breaksInput = inputs[0].value.replace(/\s+/g, '').split(',')
+  const itemsInput = inputs[1].value.replace(/\s+/g, '').split(',') 
+  const breaks = breaksInput.map(input => parseInt(input, 10))
+  const items = itemsInput.map(input => parseInt(input, 10))
+  let errors = [];
+  if(breaks.length !== items.length) {
+    errors[0] = ("Every break point needs row items.")
+  }
+  for(let i = 0; i < breaks.length; i++) {
+    if(!Number.isInteger(parseInt(breaks[i], 10)) || !Number.isInteger(parseInt(items[i],10))) {
+      errors[1] = ("All values must integers.");
+    }
+  }
+  return {
+    errors: errors.join(" "),
+    breaks: breaks,
+    items: items
+  }
 }
 
 export default Demo;
