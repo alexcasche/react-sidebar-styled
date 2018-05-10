@@ -1,68 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Demo extends Component {
-  constructor() {
-    super()
-    this.state = {
-      errors: null
-    }
+const Demo = ({updateOption}) => {
+  const toggleSide = (option) => {
+    const container = document.querySelector('.sidebar__menu');
+    container.style.display = 'none';
+    setTimeout(() => container.style.display = 'block');
+    toggleOption(option);
   }
-  handleSubmit = () => {
-    const inputResults = validateInput()
-    if(inputResults.errors) this.setState({ errors: inputResults.errors })
-    else this.props.updateOption({
-      breakPoints: inputResults.breaks,
-      rowItems: inputResults.items
-    })
+  const toggleOption = (option) => {
+    updateOption(option)
   }
-  renderErrors = () => {
-    if(this.state.errors) return <div className="demo__errors">{this.state.errors}</div>
-    else return null
-  }
-  render() {
-    const { children, breakPoints, rowItems } = this.props;
-    return (
-      <div className="demo">
-        <h1>Reactrix <span>Flex</span></h1>
-        <div className="demo__options">
-          {this.renderErrors()}
-          <div className="demo__fieldset">
-            <div className="demo__field">
-              <input className="demo__input" placeholder={`Breaks: ${breakPoints.join(', ')}`} />
-            </div>
-            <div className="demo__field">
-              <input className="demo__input" placeholder={`Items: ${rowItems.join(', ')}`} />
-            </div>
-            <div className="demo__field">
-              <button className="demo__button--submit" onClick={() => this.handleSubmit()}>Submit</button>
-            </div>
-          </div>
-        </div>
-        {children}
+  return (
+    <div className="demo">
+      <h1>React <span>Sidebar</span></h1>
+      <div className='demo__toggle'>
+        <button onClick={() => toggleSide({side: 'left'})} className='demo__toggle--left'>left</button>
+        <button onClick={() => toggleSide({side: 'right'})} className='demo__toggle--right'>right</button>
       </div>
-    )
-  }
-}
-function validateInput() {
-  const inputs = document.querySelectorAll('.demo__input')
-  const breaksInput = inputs[0].value.replace(/\s+/g, '').split(',')
-  const itemsInput = inputs[1].value.replace(/\s+/g, '').split(',') 
-  const breaks = breaksInput.map(input => parseInt(input, 10))
-  const items = itemsInput.map(input => parseInt(input, 10))
-  let errors = [];
-  if(breaks.length !== items.length) {
-    errors[0] = ("Every break point needs row items.")
-  }
-  for(let i = 0; i < breaks.length; i++) {
-    if(!Number.isInteger(parseInt(breaks[i], 10)) || !Number.isInteger(parseInt(items[i],10))) {
-      errors[1] = ("All values must integers.");
-    }
-  }
-  return {
-    errors: errors.join(" "),
-    breaks: breaks,
-    items: items
-  }
+      <div className="demo__buttons">
+        <button onClick={() => toggleOption({effect: 'slide'})} className='demo__button'>Slide</button>
+        <button onClick={() => toggleOption({effect: 'push'})} className='demo__button'>Push</button>
+        <button onClick={() => toggleOption({effect: 'fall'})} className='demo__button'>Fall</button>
+        <button onClick={() => toggleOption({effect: 'reveal'})} className='demo__button'>Reveal</button>
+        <button onClick={() => toggleOption({effect: 'diverge'})} className='demo__button'>Diverge</button>
+        <button onClick={() => toggleOption({effect: 'uncover'})} className='demo__button'>Uncover</button>
+        <button onClick={() => toggleOption({effect: 'shrink'})} className='demo__button'>Shrink</button>
+        <button onClick={() => toggleOption({effect: 'grow'})} className='demo__button'>Grow</button>
+        <button onClick={() => toggleOption({effect: 'press'})} className='demo__button'>Press</button>
+      </div>
+    </div>
+  );
 }
 
 export default Demo;

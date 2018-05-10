@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import marked from 'marked'
-import readMe from 'reactrix-flex/README.md'
+import readMe from 'react-sidebar-styled/README.md'
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-light.css'
 

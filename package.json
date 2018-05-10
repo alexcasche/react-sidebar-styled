@@ -1,11 +1,11 @@
 {
-  "name": "reactrix-flex",
+  "name": "react-sidebar-styled",
   "version": "0.0.1",
-  "description": "Lightweight Flex Component For React",
+  "description": "Off-Canvas Sidebar Component For React",
   "author": "alexcasche",
   "license": "MIT",
-  "repository": "alexcasche/reactrix-flex",
-  "homepage": "https://github.com/alexcasche/reactrix-flex#readme",
+  "repository": "alexcasche/react-sidebar-styled",
+  "homepage": "https://github.com/alexcasche/reactrix-sidebar-styled#readme",
   "keywords": [
     "react",
     "component",
@@ -35,20 +35,19 @@
     "babel-eslint": "^8.2.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.4",
     "cssnano": "^3.10.0",
+    "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "gh-pages": "^1.1.0",
-    "node-sass": "^4.9.0",
-    "node-sass-chokidar": "^1.2.2",
-    "nodemon": "^1.17.3",
-    "postcss-cli": "^5.0.0",
+    "nodemon": "^1.17.4",
     "postcss-cssnext": "^3.1.0",
     "postcss-nested": "^3.0.0",
     "react": "^16.2.0",
@@ -60,13 +59,14 @@
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-peer-deps-external": "^2.0.0",
     "rollup-plugin-postcss": "^1.6.1",
+    "rollup-plugin-prettier": "^0.4.0",
     "rollup-plugin-scss": "^0.4.0",
     "rollup-plugin-url": "^1.3.0"
   },
   "files": [
-    "index.js",
-    "index.es.js",
-    "index.css",
-    "index.es.css"
-  ]
+    "dist"
+  ],
+  "dependencies": {
+    "styled-components": "^3.2.6"
+  }
 }

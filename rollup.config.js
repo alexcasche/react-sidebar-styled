@@ -22,6 +22,7 @@ export default {
       format: 'es'
     }
   ],
+  external: [ 'styled-components' ] ,
   plugins: [
     external(),
     postcss({
@@ -29,10 +30,17 @@ export default {
       plugins: [ cssnested(), cssnext(), cssnano() ]
     }),
     url(),
+    prettier({
+      exclude: [ 'node_modules/**']
+    }),
     babel({
       exclude: [ 'node_modules/**' ]
     }),
     resolve(),
-    commonjs()
+    commonjs({
+      namedExports: {
+        'node_modules/react-is/index.js': ['isValidElementType']
+      }
+    })
   ]
 }

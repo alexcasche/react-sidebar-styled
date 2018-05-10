@@ -5714,7 +5714,7 @@ react@^16.1.1, react@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-"reactrix-sidebar@link:..":
+"reactrix-flex@link:..":
   version "0.0.0"
   uid ""
 
