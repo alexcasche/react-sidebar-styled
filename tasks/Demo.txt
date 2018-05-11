@@ -1,0 +1,5 @@
+Update Menu Option Select
+
+Fix Demo Text media...
+  Make mobile breakpoint smaller
+  Add paragraph break points (shrink by 1-2px)

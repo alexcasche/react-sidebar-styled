@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Styled className="header">
       <img className="header__logo" src={logo} alt="logo" />
-      <p>React</p>
+      <p>alexcasche</p>
       <a href="https://github.com/alexcasche/reactrix-sidebar" target="_blank" rel="noopener noreferrer">
         <i className="fab fa-github-alt" />
       </a>

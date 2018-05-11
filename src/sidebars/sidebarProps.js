@@ -4,17 +4,6 @@ import CloseIcon from '../icons/CloseIcon'
 import OpenIcon from '../icons/OpenIcon'
 
 const propTypes = {
-  effect: t.oneOf([
-    'slide',
-    'push',
-    'fall',
-    'reveal',
-    'diverge',
-    'uncover',
-    'shrink',
-    'grow',
-    'press'
-  ]),
   side: t.oneOf(['left', 'right']),
   speed: t.number,
   timing: t.string,
@@ -22,7 +11,6 @@ const propTypes = {
   icons: t.arrayOf(t.func),
 }
 const defaultProps = {
-  effect: 'slide',
   side: 'left',
   speed: 500,
   timing: 'ease',

@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 const Styled = styled.div `
   position: relative;
-  overflow: hidden;
   padding: 20px 20px 80px;
   background-color: #282C34;
   text-align: center;
   h1 {
     text-align: center;
-    color: #61DAFB;
+    color: #33F96F;
     font-weight: 500;
     margin: 50px auto 15px;
     font-size: 40px;
@@ -40,7 +39,7 @@ const Styled = styled.div `
       background-color: white;
     }
     &.active, &.active:hover {
-      background-color: #58C1DE;
+      background-color: #16D04A;
       color: white;
       pointer-events: none;
     }
@@ -50,6 +49,12 @@ const Styled = styled.div `
     margin: 0 auto 20px;
     display: flex;
     justify-content: center;
+  }
+  .dropdown {
+    .dropdown__option:hover {
+      background-color: #16D04A;
+      color: white;
+    }
   }
 `;
 

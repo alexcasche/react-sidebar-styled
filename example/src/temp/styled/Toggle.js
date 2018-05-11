@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Styled = styled.div `
+  margin: auto;
   button {
     padding: .35em 0;
     width: 100px; 

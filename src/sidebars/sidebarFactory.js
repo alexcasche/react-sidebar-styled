@@ -34,15 +34,13 @@ export default Styled => {
       )
     }
     render() {
-      const CloseIcon = this.props.icons[0];
-      const OpenIcon = this.props.icons[1];
       return (
         <Styled className="sidebar" {...this.state} {...this.props}>
           <div className="sidebar__container">
             <div className="sidebar__menu" ref={this.menuRef}>
               <div className="sidebar__close">
                 <button className="sidebar__close-btn" onClick={this.toggleMenu}>
-                  <CloseIcon />
+                  {this.props.icons[0]()}
                 </button>
               </div>
               {this.props.children[0]}
@@ -51,7 +49,7 @@ export default Styled => {
               {this.props.children[1]}
               <div className="sidebar__open">
                 <button className="sidebar__open-btn" onClick={this.toggleMenu}>
-                  <OpenIcon />
+                  {this.props.icons[1]()}
                 </button>
               </div>
               <div className="sidebar__overlay" onClick={this.toggleMenu} />

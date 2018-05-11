@@ -11,28 +11,28 @@ const Styled = styled.header `
   top: 0;
   width: 100vw;
   .header__logo {
-    height: 25px;
+    height: 20px;
     position: relative;
-    top: 12px;
+    top: 14px;
     margin-right: 10px;
   }
   p {
     flex-grow: 2;
     margin: 0;
     font-size: 20px;
-    line-height: 48px;
-    font-size: 20px;
-    color: #61DAFB;
-    font-weight: 500;
+    line-height: 50px;
+    font-size: 17px;
+    color: #CCC;
+    font-weight: 600;
   }
   a {
     margin-left: 20px;
-    color: #DDD;
+    color: #CCC;
     font-size: 26px;
     line-height: 50px;
   }
   a:hover {
-    color: #61DAFB;
+    color: #33F96F;
   }
 `;
 

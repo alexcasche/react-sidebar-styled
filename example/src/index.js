@@ -12,26 +12,30 @@ import './old.css'
 export default class Example extends Component {
   constructor() {
     super();
-    this.state = { effect: 'slide', side: 'left' }
+    this.state = { sidebar: 'slide', side: 'left' }
   }
   componentWillMount() {
-    fetch(readMe).then(response => {
+    this.markdown = fetch(readMe).then(response => {
       return response.text() }).then(text => {
-      this.setState({markdown: marked(text)})
+      return marked(text);
     })
   }
   updateOption = (option) => {
-    this.setState({...this.state, ...option})
+    const body = document.body;
+    this.setState({...this.state, ...option}, () => {
+      body.classList.add('freeze');
+      setTimeout(() => { body.classList.remove('freeze')}, );
+    })
   }
   render () {
-    const RenderSidebar = sidebars[this.state.effect];
+    const RenderSidebar = sidebars[this.state.sidebar];
     return (
       <RenderSidebar {...this.state}>
         <div>Menu Goes Here</div>
         <div>
           <Header/>
           <Demo {...this.state} updateOption={this.updateOption} />
-          <Details markdown={this.state.markdown} />
+          <Details markdown={this.markdown} />
         </div>
       </RenderSidebar>
     )

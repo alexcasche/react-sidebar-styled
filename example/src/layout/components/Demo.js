@@ -1,40 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Styled from '../styled/Demo';
 import FieldSet from '../../temp/components/FieldSet';
+import Toggle from '../../temp/components/Toggle';
 import Select from '../../temp/components/Select';
 import options from '../options';
 
-const Demo = (props) => {
-  const toggleSide = (option) => {
-    const container = document.querySelector('.sidebar__menu');
-    container.style.display = 'none';
-    setTimeout(() => container.style.display = 'block');
-    toggleOption(option);
+export default class Demo extends Component {
+  toggleSide = () => { 
+    this.props.updateOption({
+      side: this.props.side === 'left' ? 'right' : 'left'
+    })
   }
-  const toggleOption = (option) => {
-    props.updateOption(option)
+  updateSidebar = (sidebar) => {
+    this.props.updateOption({
+      sidebar: sidebar
+    })
   }
-  const updateSelect = (e) => {
-    let option = {};
-    option[e.target.id] = e.target.value.toLowerCase();
-    props.updateOption(option);
+  render() {
+    const { side } = this.props;
+    return (
+      <Styled className='demo'>
+        <h1>React <span>Sidebar</span></h1>
+        <p>Styled off-canvas sidebar component for React with a variety of CSS transitions.</p>
+        <FieldSet>
+          <Toggle options={['left', 'right']} active={side} onChange={this.toggleSide} />
+        </FieldSet>
+        <FieldSet>
+          <Select id="effect" 
+            onChange={this.updateSidebar} 
+            options={options.sidebar} 
+            label="Sidebar" 
+            placeholder="Select sidebar..."
+            default={this.props.sidebar}
+          />
+          {/*<Select id="effect" options={options} label="Menu" placeholder="Select menu..."/>*/}
+        </FieldSet>
+      </Styled>
+    );
   }
-  const leftToggle = props.side === 'left' ? ' active' : '';
-  const rightToggle = props.side === 'right' ? ' active' : '';
-  return (
-    <Styled className='demo'>
-      <h1>React <span>Sidebar</span></h1>
-      <p>Styled off-canvas sidebar component for React with a variety of CSS transitions.</p>
-      <FieldSet>
-        <button onClick={() => toggleSide({side: 'left'})} className={`field demo__toggle${leftToggle}`}>left</button>
-        <button onClick={() => toggleSide({side: 'right'})} className={`field demo__toggle${rightToggle}`}>right</button>
-      </FieldSet>
-      <FieldSet>
-        <Select id="effect" options={options} label="Sidebar" placeholder="Select sidebar..."/>
-        <Select id="effect" options={options} label="Menu" placeholder="Select menu..."/>
-      </FieldSet>
-    </Styled>
-  );
 }
-
-export default Demo;

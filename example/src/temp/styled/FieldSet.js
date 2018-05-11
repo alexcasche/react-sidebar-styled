@@ -5,7 +5,7 @@ const Styled = styled.div `
   max-width: 750px;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   border: none;
   .field {
     flex-basis: calc(50% - 10px);
