@@ -1,44 +1,53 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import marked from 'marked';
+import readMe from 'react-sidebar-styled/README.md';
 import * as Sidebar from 'react-sidebar-styled'
-import Layout from './layout/Layout'
+import Header from './layout/components/Header'
+import Demo from './layout/components/Demo'
+import Details from './layout/components/Details'
 import './style.css'
 import './old.css'
-
-const options = {
-  side: "left",
-  effect: "slide"
-}
 
 export default class Example extends Component {
   constructor() {
     super();
-    this.state = {...options}
-    this.components = {
-      diverge: Sidebar.diverge,
-      fall: Sidebar.fall,
-      grow: Sidebar.grow,
-      press: Sidebar.press,
-      push: Sidebar.push,
-      reveal: Sidebar.reveal,
-      shrink: Sidebar.shrink,
-      slide: Sidebar.slide,
-      uncover: Sidebar.uncover
-    }
+    this.state = { effect: 'slide', side: 'left' }
+  }
+  componentWillMount() {
+    fetch(readMe).then(response => {
+      return response.text() }).then(text => {
+      this.setState({markdown: marked(text)})
+    })
   }
   updateOption = (option) => {
     this.setState({...this.state, ...option})
   }
   render () {
-    const RenderSidebar = this.components[this.state.effect];
+    const RenderSidebar = sidebars[this.state.effect];
     return (
       <RenderSidebar {...this.state}>
         <div>Menu Goes Here</div>
-        <Layout {...this.state} updateOption={this.updateOption} />
+        <div>
+          <Header/>
+          <Demo {...this.state} updateOption={this.updateOption} />
+          <Details markdown={this.state.markdown} />
+        </div>
       </RenderSidebar>
     )
   }
 }
 
+const sidebars = {
+  diverge: Sidebar.diverge,
+  fall: Sidebar.fall,
+  grow: Sidebar.grow,
+  press: Sidebar.press,
+  push: Sidebar.push,
+  reveal: Sidebar.reveal,
+  shrink: Sidebar.shrink,
+  slide: Sidebar.slide,
+  uncover: Sidebar.uncover
+}
 
 ReactDOM.render(<Example />, document.getElementById('root'))

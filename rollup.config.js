@@ -30,9 +30,6 @@ export default {
       plugins: [ cssnested(), cssnext(), cssnano() ]
     }),
     url(),
-    prettier({
-      exclude: [ 'node_modules/**']
-    }),
     babel({
       exclude: [ 'node_modules/**' ]
     }),

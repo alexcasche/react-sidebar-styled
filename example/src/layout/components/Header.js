@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
+import Styled from '../styled/Header'
 
 const Header = () => {
   return (
-    <header className="header">
+    <Styled className="header">
       <img className="header__logo" src={logo} alt="logo" />
       <p>React</p>
       <a href="https://github.com/alexcasche/reactrix-sidebar" target="_blank" rel="noopener noreferrer">
@@ -12,7 +13,7 @@ const Header = () => {
       <a href="https://npmjs.org/reactrix-sidebar" target="_blank" rel="noopener noreferrer">
         <i className="fab fa-npm" />
       </a>
-    </header>
+    </Styled>
   );
 }
 

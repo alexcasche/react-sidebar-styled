@@ -1,17 +1,25 @@
-import React from 'react';
+import React from 'react'
 import { PropTypes as t } from 'prop-types'
+import CloseIcon from '../icons/CloseIcon'
+import OpenIcon from '../icons/OpenIcon'
 
 const propTypes = {
   effect: t.oneOf([
-    'slide', 'push', 'fall', 
-    'reveal', 'diverge', 'uncover',
-    'shrink', 'grow', 'press'
+    'slide',
+    'push',
+    'fall',
+    'reveal',
+    'diverge',
+    'uncover',
+    'shrink',
+    'grow',
+    'press'
   ]),
   side: t.oneOf(['left', 'right']),
   speed: t.number,
   timing: t.string,
   overlay: t.bool,
-  icons: t.arrayOf(t.func)
+  icons: t.arrayOf(t.func),
 }
 const defaultProps = {
   effect: 'slide',
@@ -19,10 +27,10 @@ const defaultProps = {
   speed: 500,
   timing: 'ease',
   overlay: true,
-  icons: [ 
-    () => <i className="fas fa-times" />, 
-    () => <i className="fas fa-bars" />
-  ]
+  icons: [
+    () => <CloseIcon />,
+    () => <OpenIcon />,
+  ],
 }
 
 export { propTypes, defaultProps }

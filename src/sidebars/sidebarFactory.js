@@ -1,49 +1,59 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import { propTypes, defaultProps } from './sidebarProps';
+import React, { Component } from 'react'
+import { propTypes, defaultProps } from './sidebarProps'
 
 export default Styled => {
   class SideBar extends Component {
-    static propTypes = propTypes;
-    static defaultProps = defaultProps;
+    static propTypes = propTypes
+    static defaultProps = defaultProps
     constructor(props) {
-      super(props);
+      super(props)
       this.state = {
         isOpen: false,
         active: false,
-        menuWidth: false
-      };
-      this.menuRef = React.createRef();
+        menuWidth: false,
+      }
+      this.menuRef = React.createRef()
     }
     componentDidMount() {
-      this.setState({ menuWidth: `${this.menuRef.current.clientWidth}px` });
+      this.setState({ menuWidth: `${this.menuRef.current.clientWidth}px` })
     }
     handleSlide = () => {
-      clearTimeout(this.timeout);
+      clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
         this.setState((prevState, props) => {
-          return { active: !prevState.isOpen ? false : true}
-      })}, this.props.speed)
+          return { active: !prevState.isOpen ? false : true }
+        })
+      }, this.props.speed)
     }
     toggleMenu = () => {
-      this.setState({ isOpen: !this.state.isOpen, active: true }, this.handleSlide());
-    };
+      this.setState(
+        { isOpen: !this.state.isOpen, active: true },
+        this.handleSlide()
+      )
+    }
     render() {
+      const CloseIcon = this.props.icons[0];
+      const OpenIcon = this.props.icons[1];
       return (
-        <Styled className="sidebar" {...this.state} {...this.props} >
+        <Styled className="sidebar" {...this.state} {...this.props}>
           <div className="sidebar__container">
             <div className="sidebar__menu" ref={this.menuRef}>
-              <button className="sidebar__btn-close" onClick={this.toggleMenu}>
-                Close
-              </button>
+              <div className="sidebar__close">
+                <button className="sidebar__close-btn" onClick={this.toggleMenu}>
+                  <CloseIcon />
+                </button>
+              </div>
               {this.props.children[0]}
             </div>
             <div className="sidebar__page">
-              <button className="sidebar__btn-open" onClick={this.toggleMenu}>
-              Open
-              </button>
               {this.props.children[1]}
+              <div className="sidebar__open">
+                <button className="sidebar__open-btn" onClick={this.toggleMenu}>
+                  <OpenIcon />
+                </button>
+              </div>
               <div className="sidebar__overlay" onClick={this.toggleMenu} />
             </div>
           </div>
@@ -51,5 +61,5 @@ export default Styled => {
       )
     }
   }
-  return SideBar;
+  return SideBar
 }

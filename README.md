@@ -1,9 +1,10 @@
 React Sidebar
 ===============
 
-Flexible React Sidebar Component
+Styled off-canvas sidebar component for React with a variety of CSS transitions.
 
-[![NPM](https://img.shields.io/npm/v/react-sidebar-styled.svg)](https://www.npmjs.com/package/react-sidebar-styled) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-sidebar-styled.svg)](https://www.npmjs.com/package/react-sidebar-styled) 
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-circle)](https://github.com/prettier/prettier)
 [![Travis](https://img.shields.io/travis/alexcasche/reactrix-sidebar.svg)](https://img.shields.io/travis/alexcasche/react-sidebar-styled)
 
 
@@ -12,7 +13,7 @@ Install
 
 ```bash
 npm install --save react-sidebar-styled
-yarn add reactrix-sidebar
+yarn add reactrix-sidebar-styled
 ```
 
 Usage
@@ -52,34 +53,29 @@ Features
 
 Examples
 ---------------
-- Demo - https://alexcasche.github.io/reactrix-sidebar/
+- Demo - https://alexcasche.github.io/react-sidebar-styled/
 - Sandbox - https://codesandbox.io/s/jlzno327x9
 
 Props
 ---------------
 
-| Prop              | Type        | Default     |   Description: Options   |
-|-------------------|-------------|-------------|-------------|
-| `side`            |  _string_   |  `left`     | Menu location: `left` `right` |
-| `effect`          |  _string_   |  `slide`    | Transition effect: `slide` `push` `fall` `reveal` `diverge` `uncover` `shrink` `grow` `press` |
-| `speed`           |  _number_   |  `500`      | Transition speed (milliseconds)  |
-| `timing`          |  _string_   |  `ease`     | Transition timing function:   |
-| `overlay`         |  _boolean_  |  `true`     | Display overlay: `true` `false` |
-| `buttons`         |  _array_    |  `null`     | Custom icons: `[ component, component ]`|
+| Prop              | Type        | Default          |   Description: Options   |
+|-------------------|-------------|------------------|-------------|
+| `side`            |  _string_   |  `left`          | Menu location: `left` `right` |
+| `effect`          |  _string_   |  `slide`         | Transition effect: `slide` `push` `fall` `reveal` `diverge` `uncover` `shrink` `grow` `press` |
+| `speed`           |  _number_   |  `500`           | Transition speed (milliseconds)  |
+| `timing`          |  _string_   |  `ease`          | Transition timing function:   |
+| `overlay`         |  _boolean_  |  `true`          | Display overlay: `true` `false` |
+| `icons`           |  _array_    |  `[ close, open ]`     | Custom icons: `[ component, component ]`|
 
 ### Custom Icons  ##
 Set the icons prop equal to an array consisting of two components.
 
 ```jsx
-function openButton {
-  return <i className="fas fa-times" />
-}
-function closeButton {
-  return <i className="fas fa-bars" />
-}
+import { OpenIcon, CloseIcon } from './CustomIcons'
 ...
   const options = {
-    icons: [ openButton, closeButton ]
+    icons: [ OpenIcon, CloseIcon ]
   }
 ...
   <Sidebar {...options} />
@@ -92,10 +88,8 @@ Classes
 | Class                  | Description        |
 |------------------------|--------------------|
 | `.sidebar`             |  Outer component wrapper |
-| `.sidebar.is-open`     |  Outer component when open  |
 | `.sidebar__container`  |  Inner component wrapper  |
 | `.sidebar__menu`       |  Outer menu wrapper  |
-| `.sidebar__nav`        |  Inner menu wrapper  |
 | `.sidebar__page`       |  Page content wrapper  |
 | `.sidebar__overlay`    |  Page overlay  |
 | `.sidebar__btn-open`   |  Open menu button  |
@@ -126,9 +120,10 @@ npm install && npm start
 yarn install && yarn start
 ```
 
-Shoutout
+Shoutouts
 ---------------
-Big thanks to Travis Fischer for the awesome [create-react-library](https://github.com/transitive-bullshit/create-react-library) 🙌
+- Inspiration: [react-burger-menu](https://github.com/negomi/react-burger-menu) 😍
+- Setup: [ create-react-library ](https://github.com/transitive-bullshit/create-react-library) 🙌
 
 
 License
