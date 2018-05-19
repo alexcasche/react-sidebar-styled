@@ -1,0 +1,8 @@
+{
+  "short_name": "@alexcasche/react-sidebar-menu",
+  "name": "@alexcasche/react-sidebar-menu",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
