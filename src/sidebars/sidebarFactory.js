@@ -39,7 +39,10 @@ export default Styled => {
           <div className="sidebar__container">
             <div className="sidebar__menu" ref={this.menuRef}>
               <div className="sidebar__close">
-                <button className="sidebar__close-btn" onClick={this.toggleMenu}>
+                <button
+                  className="sidebar__close-btn"
+                  onClick={this.toggleMenu}
+                >
                   {this.props.icons[0]()}
                 </button>
               </div>

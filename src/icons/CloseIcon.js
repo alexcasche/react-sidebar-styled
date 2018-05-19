@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-const Styled = styled.span `
+const Styled = styled.span`
   width: 30px;
   height: 30px;
   display: block;
@@ -31,4 +31,4 @@ const CloseIcon = () => {
   )
 }
 
-export default CloseIcon;
+export default CloseIcon

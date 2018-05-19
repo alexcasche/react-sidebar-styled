@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import marked from 'marked';
-import readMe from 'react-sidebar-styled/README.md';
-import * as Sidebar from 'react-sidebar-styled'
+import readMe from 'react-styled-sidebar/README.md';
+import * as Sidebar from 'react-styled-sidebar'
 import Header from './layout/components/Header'
 import Demo from './layout/components/Demo'
 import Details from './layout/components/Details'

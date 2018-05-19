@@ -10,15 +10,13 @@ const Styled = sidebarBase.extend`
         ? 'translate3d(0, 0, 0)'
         : props.side === 'right'
           ? `translate3d(-${props.menuWidth}, 0, 0)`
-          : `translate3d(${props.menuWidth}, 0, 0)`
-    };
+          : `translate3d(${props.menuWidth}, 0, 0)`};
   }
   .sidebar__menu {
     transform: ${props =>
       props.side === 'right'
         ? 'translate3d(100%, 0, 0)'
-        : 'translate3d(-100%, 0, 0)'
-    };
+        : 'translate3d(-100%, 0, 0)'};
   }
 `
 

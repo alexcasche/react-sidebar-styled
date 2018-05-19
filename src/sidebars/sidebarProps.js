@@ -15,10 +15,7 @@ const defaultProps = {
   speed: 500,
   timing: 'ease',
   overlay: true,
-  icons: [
-    () => <CloseIcon />,
-    () => <OpenIcon />,
-  ],
+  icons: [() => <CloseIcon />, () => <OpenIcon />],
 }
 
 export { propTypes, defaultProps }

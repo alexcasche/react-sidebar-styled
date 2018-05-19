@@ -1,19 +1,17 @@
-React Sidebar
+react-styled-sidebar
 ===============
 
-Styled off-canvas sidebar component for React with a variety of CSS transitions.
+Github pages component for React built with styled-components < 💅>.
 
-[![NPM](https://img.shields.io/npm/v/react-sidebar-styled.svg)](https://www.npmjs.com/package/react-sidebar-styled) 
+[![NPM](https://img.shields.io/npm/v/react-styled-sidebar.svg)](https://www.npmjs.com/package/react-styled-sidebar) 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-circle)](https://github.com/prettier/prettier)
-[![Travis](https://img.shields.io/travis/alexcasche/reactrix-sidebar.svg)](https://img.shields.io/travis/alexcasche/react-sidebar-styled)
-
 
 Install
 ---------------
 
 ```bash
-npm install --save react-sidebar-styled
-yarn add reactrix-sidebar-styled
+npm install --save react-styled-sidebar
+yarn add react-styled-sidebar
 ```
 
 Usage
@@ -23,10 +21,10 @@ Usage
 <br/><br/>
 
 ```jsx
-import React, { Component } from 'react'
-import ReactSidebar from 'react-sidebar-styled'
+import React, { Component } from 'react';
+import Sidebar from 'react-styled-sidebar';
 
-class ReactSidebar extends Component {
+class Example extends Component {
   render () {
     const options = {
       side: "left",
@@ -53,8 +51,7 @@ Features
 
 Examples
 ---------------
-- Demo - https://alexcasche.github.io/react-sidebar-styled/
-- Sandbox - https://codesandbox.io/s/jlzno327x9
+- Demo - https://alexcasche.github.io/react-styled-sidebar/
 
 Props
 ---------------
@@ -102,7 +99,7 @@ Follow these steps to setup a local development environment.  Use yarn or npm - 
 1. Clone the repo from Github
 
 ```bash
-git clone https://github.com/alexcasche/react-sidebar-styled
+git clone https://github.com/alexcasche/react-styled-sidebar
 ```
 
 2. Setup project & start rollup watch

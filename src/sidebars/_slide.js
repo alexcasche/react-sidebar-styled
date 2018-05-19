@@ -11,8 +11,7 @@ const Styled = sidebarBase.extend`
         ? props.side === 'right'
           ? 'translate3d(100%, 0, 0)'
           : 'translate3d(-100%, 0, 0)'
-        : 'translate3d(0, 0, 0)'
-    };
+        : 'translate3d(0, 0, 0)'};
   }
 `
 

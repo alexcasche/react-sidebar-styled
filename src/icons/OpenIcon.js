@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-const Styled = styled.span `
+const Styled = styled.span`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,4 +28,4 @@ const OpenIcon = () => {
   )
 }
 
-export default OpenIcon;
+export default OpenIcon

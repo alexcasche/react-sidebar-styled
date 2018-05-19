@@ -1,11 +1,11 @@
 {
-  "name": "react-sidebar-styled",
-  "version": "0.0.1",
-  "description": "Off-Canvas Sidebar Component For React",
+  "name": "react-styled-sidebar",
+  "version": "0.0.2",
+  "description": "Github pages component for React built with styled-components.",
   "author": "alexcasche",
   "license": "MIT",
   "repository": "alexcasche/react-sidebar-styled",
-  "homepage": "https://github.com/alexcasche/reactrix-sidebar-styled#readme",
+  "homepage": "https://github.com/alexcasche/react-styled-sidebar#readme",
   "keywords": [
     "react",
     "component",
@@ -29,7 +29,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0"
+    "react": "^15.0.0 || ^16.0.0",
+    "styled-components": "^3.2.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -66,8 +67,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "styled-components": "^3.2.6"
-  }
+  ]
 }
